@@ -20,9 +20,7 @@ namespace OSMBot
             options.AddArgument("--log-level=3");
             driver = new ChromeDriver(options);
 
-
             login();
-
 
             //login
             void login()
