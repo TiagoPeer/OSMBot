@@ -80,10 +80,12 @@ namespace OSMBot
                     System.Threading.Thread.Sleep(random.Next(3000, 5000));
                     try
                     {
-                        var caixaSemAnuncios = driver.FindElement(By.XPath("//div[@id='modal-dialog-alert']/div[4]/div/div/div/div[2]/div/div/p"));
-                        var btnSemAnuncios = driver.FindElement(By.XPath("//div[@type='button']"));
+                        //var caixaSemAnuncios = driver.FindElement(By.XPath("//div[@id='modal-dialog-alert']/div[4]/div/div/div/div[2]/div/div/p"));
+                        var modalSemAnuncios = driver.FindElement(By.Id("modal-dialog-alert"));
+                        driver.FindElement(By.ClassName("btn")).Click();
+                        //var btnSemAnuncios = driver.FindElement(By.XPath("//div[@type='button']"));
 
-                        btnSemAnuncios.Click();
+                        //btnSemAnuncios.Click();
                         Console.WriteLine("Sem mais anuncios para ver");
                         Console.WriteLine("--------------------------");
                         Console.WriteLine("Esperando 1 hora");
@@ -113,7 +115,7 @@ namespace OSMBot
                 {
                     Console.WriteLine("Erro, ver ficheiro Log");
                     ErrorLogging(e);
-                    login();
+                    verAnuncio();
                 }
             }
 
@@ -131,13 +133,7 @@ namespace OSMBot
                     ErrorLogging(e);
                 }
             }
-            void encontrarClassClicar(By by)
-            {
-                if (IsElementPresent(by))
-                {
-                    driver.FindElements(by).FirstOrDefault().Click();
-                };
-            }
+           
         }
         public static void ErrorLogging(Exception ex)
         {
